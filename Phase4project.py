@@ -1,6 +1,4 @@
-#
-#
-#
+
 from datetime import datetime
 ################################################################################
 def CreateUsers():
@@ -27,6 +25,7 @@ def CreateUsers():
     # close file to save data
     ########## Write the line of code that will close the file UserFile
     UserFile.close()
+    printuserinfo()
        
     
 
@@ -77,12 +76,16 @@ def Login():
     UserRole = "None"
     while True:
        ########## Write the line of code that will read a line from UserFile and assign it to UserDetail
+       UserDetail= UserFile.readline()
              
        if not UserDetail:
            return UserRole, UserName
        ########## Write the line of code that will replace the carriage return in UserDetail
+       UserDetail = UserDetail.replace("\n", "")
+
        
        ########## Write the line of code that will split UserDetail on the pipe delimiter (|) and assign it to UserList
+       UserList = UserDetail.split("|")
                   
        if UserName == UserList[0]:
             UserRole = UserList[2]  # user is valid, return role
@@ -176,22 +179,23 @@ def PrintTotals(EmpTotals):
 if __name__ == "__main__":
     ##################################################
     ########## Write the line of code to call the method CreateUsers
-    
-    print()
-    print("##### Data Entry #####")
+    def CreateUsers():
+        print()
+        print("##### Data Entry #####")
     ########## Write the line of code to assign UserRole and UserName to the function Login
-     
-    DetailsPrinted = False  ###
-    EmpTotals = {} ###
-    ########## Write the if statement that will check to see if UserRole is equal to NONE (NOTE: code will show red error lines until this line is written)
+Login = (GetUserRole, GetUserName)
     
-        print(UserName," is invalid.")
-    else:
+DetailsPrinted = False  ###
+EmpTotals = {} ###
+    ########## Write the if statement that will check to see if UserRole is equal to NONE (NOTE: code will show red error lines until this line is written)
+
+if (GetUserRole) == "NONE":   
+       print(UserName," is invalid.")
+else:
     # only admin users can enter data
         ##### write the if statement that will check to see if the UserRole is equal to ADMIN (NOTE: code will show red error lines until this line is written)
-        
-   
-            EmpFile = open("Employees.txt", "a+")                
+ if GetUserRole == "ADMIN":
+            EmpFile = open("Employees.txt", "a+")               
             while True:
                 empname = GetEmpName()
                 if (empname.upper() == "END"):
@@ -204,5 +208,5 @@ if __name__ == "__main__":
                 EmpFile.write(EmpDetail)
         # close file to save data
             EmpFile.close()    
-        printinfo(DetailsPrinted)
+printinfo(DetailsPrinted)
 
