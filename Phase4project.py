@@ -4,21 +4,21 @@ from datetime import datetime
 def CreateUsers():
     print('##### Create users, passwords, and roles #####')
     ########## Open the file user.txt in append mode and assign to UserFile
-    UserFile= open(user.txt, "a")
+    UserFile= open(Users.txt, "a")
      
     while True:
         ########## Write the line of code that will call function GetUserName and assign the return value to username
-        def GetUserName():
-            return username
+        GetUserName()
+       
         if (username.upper() == "END"):
             break
         ########## Write the line of code that will call function GetUserPassword and assign the return value to userpwd
-        def GetUserPassword():
-            return userpwd
+        GetUserPassword()
+        
         
         ########## Write the line of code that will call function GetUserRole() and assign the return value to userrole
-        def GetUserRole():
-            return userrole
+        GetUserRole()
+            
         
         UserDetail = username + "|" + userpwd + "|" + userrole + "\n"  
         UserFile.write(UserDetail)
@@ -31,7 +31,7 @@ def CreateUsers():
 
 def GetUserName():
     ##### write the code to enter the username or End and return username 
-    name = input("Enter Username")
+    usernamename = input("Enter Username")
     return username
    
 
@@ -69,8 +69,7 @@ def printuserinfo():
 def Login():
         # read login information and store in a list
     ########## Write the line of code that will open the file Users.txt in read mode
-    open(Users.txt, "r")
-    
+    UserFile = open("Users.txt","r")
     
     UserName = input("Enter User Name: ")
     UserRole = "None"
@@ -179,34 +178,32 @@ def PrintTotals(EmpTotals):
 if __name__ == "__main__":
     ##################################################
     ########## Write the line of code to call the method CreateUsers
-    def CreateUsers():
-        print()
-        print("##### Data Entry #####")
+    CreateUsers()
     ########## Write the line of code to assign UserRole and UserName to the function Login
-Login = (GetUserRole, GetUserName)
+    GetUserRole, GetUserName = Login()
     
-DetailsPrinted = False  ###
-EmpTotals = {} ###
-    ########## Write the if statement that will check to see if UserRole is equal to NONE (NOTE: code will show red error lines until this line is written)
+    DetailsPrinted = False  ###
+    EmpTotals = {} ###
+        ########## Write the if statement that will check to see if UserRole is equal to NONE (NOTE: code will show red error lines until this line is written)
 
-if (GetUserRole) == "NONE":   
-       print(UserName," is invalid.")
-else:
-    # only admin users can enter data
-        ##### write the if statement that will check to see if the UserRole is equal to ADMIN (NOTE: code will show red error lines until this line is written)
- if GetUserRole == "ADMIN":
-            EmpFile = open("Employees.txt", "a+")               
-            while True:
-                empname = GetEmpName()
-                if (empname.upper() == "END"):
-                    break
-                fromdate, todate = GetDatesWorked()
-                hours = GetHoursWorked()
-                hourlyrate = GetHourlyRate()
-                taxrate = GetTaxRate()
-                EmpDetail = fromdate + "|" + todate  + "|" + empname  + "|" + str(hours)  + "|" + str(hourlyrate)  + "|" + str(taxrate) + "\n"  
-                EmpFile.write(EmpDetail)
-        # close file to save data
-            EmpFile.close()    
+    if (GetUserRole) == "NONE":   
+           print(UserName," is invalid.")
+    else:
+        # only admin users can enter data
+            ##### write the if statement that will check to see if the UserRole is equal to ADMIN (NOTE: code will show red error lines until this line is written)
+     if GetUserRole == "ADMIN":
+                EmpFile = open("Employees.txt", "a+")               
+                while True:
+                    empname = GetEmpName()
+                    if (empname.upper() == "END"):
+                        break
+                    fromdate, todate = GetDatesWorked()
+                    hours = GetHoursWorked()
+                    hourlyrate = GetHourlyRate()
+                    taxrate = GetTaxRate()
+                    EmpDetail = fromdate + "|" + todate  + "|" + empname  + "|" + str(hours)  + "|" + str(hourlyrate)  + "|" + str(taxrate) + "\n"  
+                    EmpFile.write(EmpDetail)
+            # close file to save data
+                EmpFile.close()    
 printinfo(DetailsPrinted)
 
